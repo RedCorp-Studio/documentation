@@ -1,0 +1,115 @@
+# Overrides
+While we do not provide support for modified frameworks, certain key values can be overridden to ensure compatibility with the Ultimate Admin Panel (UAP).
+## Command names
+In some cases, you may encounter conflicts with other scripts that use the same command names as the Ultimate Admin Panel. You can modify these command names by adjusting the variables in your `config.lua` file. Default values are listed below.
+### How to change command Names
+```lua filename="config.lua" copy
+Config.Commands = {
+    Car = "car",
+    Announce = "announce",
+    Bring = "bring",
+    Bringback = "bringback",
+    Goto = "goto",
+    Goback = "goback",
+    Tptocoords = "tptocoords",
+    Tpm = "tpm",
+    Setped = "setped",
+    Resetped = "resetped",
+    Heal = "heal",
+    Revive = "revive",
+    Kill = "kill",
+    Freeze = "freeze",
+    Invincible = "invincible",
+    Invisible = "invisible",
+    Noclip = "noclip",
+    Kick = "kick",
+    Ban = "ban",
+    Admin = "admin",
+    Repair = "repair",
+    Report = "report",
+    Reports = "reports",
+    Showcoords = "showcoords",
+    Coords = "coords",
+    Shownames = "shownames",
+    Spectate = "spectate"
+}
+```
+### Example
+If you want to change the admin and car commands:
+```lua filename="config.lua" copy
+Config.Commands = {
+    Admin = "uap"
+    Car = "uapcar"
+}
+```
+## Event names
+Similarly, you may need to change event names to avoid conflicts with other scripts.
+### Default values
+#### ESX
+```lua filename="config.lua" copy
+Config.Events = {
+    Client = {
+        PlayerLoaded = "esx:playerLoaded",
+        SetAccountMoney = "esx:setAccountMoney",
+        Kill = "esx:killPlayer",
+        Heal = "red_admin:healPlayer",
+        Revive = "esx_ambulancejob:revive"
+    },
+    Server = {
+        PlayerLoaded = "esx:playerLoaded"
+        SetJob = "esx:setJob",
+        SetJob2 = "esx:setJob2",
+        PlayerLogout = "esx:playerLogout",
+        AddAccountMoney = "esx:addAccountMoney",
+        RemoveAccountMoney = "esx:removeAccountMoney",
+        SetAccountMoney = "esx:setAccountMoney"
+    }
+}
+```
+#### QBCore
+```lua filename="config.lua" copy
+Config.Events = {
+    Client = {
+        PlayerLoaded = "QBCore:Client:OnPlayerLoaded",
+        Kill = "hospital:client:KillPlayer",
+        Heal = "hospital:client:HealInjuries",
+        Revive = "hospital:client:Revive"
+    },
+    Server = {
+        PlayerLoaded = "QBCore:Server:PlayerLoaded"
+        SetJob = "QBCore:Server:OnJobUpdate",
+        SetJob2 = "QBCore:Server:OnGangUpdate",
+        PlayerLogout = "QBCore:Server:OnPlayerUnload",
+        SetAccountMoney = "QBCore:Server:OnMoneyChange"
+    }
+}
+```
+### How to change event names
+To change event names, adjust the variables in your `config.lua file`. For example, if you want to change the player loaded event to `myPlayerLoaded`:
+```lua filename="config.lua" copy
+Config.Events = {
+    Client = {
+        PlayerLoaded = "esx:myPlayerLoaded"
+    },
+    Server = {
+        PlayerLoaded = "esx:myPlayerLoaded"
+    }
+}
+```
+
+## Framework names
+You can customize framework names according to your setup by modifying the `Config.FrameworkNames` variable.
+### Default values
+```lua filename="config.lua" copy
+Config.FrameworkNames = {
+    esx = "es_extended",
+    qb = "qb-core"
+}
+```
+### How to change framework names
+For instance, if your `es_extended` framework is named `mycustomesx`, adjust the variable accordingly:
+```lua filename="config.lua" copy
+Config.FrameworkNames = {
+    esx = "mycustomesx"
+}
+```

@@ -1,0 +1,103 @@
+import 'components/youtube.tsx'
+
+# Configuration
+
+The configuration file can be found in the root folder of the project with the name `config.lua`.
+
+## Default configuration
+Here is an example of the complete default `config.lua` file for Ultimate Admin Panel:
+
+```lua filename="config.lua" copy
+Config = {}
+
+Config.Language = "en" -- Language available by default : en | fr
+Config.Multichar = true -- Set to true if you use ESX/QB Multicharacter
+Config.Currency = "$" -- Your server currency
+
+Config.Keys = { -- Keys used to open different menus
+    Admin = 'H', -- Admin menu
+    Reports = 'J', -- Player's reports menu
+    Noclip = 'N' -- Toggle noclip
+}
+
+Config.Permissions = { -- Permissions applied for each group, please see https://redcorp.studio/ultimate-admin-panel/configuration#permissions for more details
+    admin = {
+        "*",
+    },
+
+    helper = {
+        "players.view",
+        "admin"
+    }
+}
+
+Config.AdminCarPlate = 'RedCorp' -- Default admin car plate used for /car
+Config.AdminCarModel = 'adder' -- Default admin car model used for /car
+
+Config.DiscordLogs = {
+    EnableDiscordLogs = false, -- Turn on/off discord logs
+    Webhooks = {
+        default = '',  -- Replace this with your Discord webhook
+        -- You can set a default webhook and assign a different one for specific actions
+        -- If no webhook is specified for an action, the default one will be used
+        -- Possible actions : noclip, warn, message, money, notes, job, gang, inventory, spectate, reports, onduty, announce, car, freeze, heal, invincible, invisible, kill, ped, teleport, ban, kick
+        -- Example :
+        -- default = 'myDefaultWebhook',
+        -- teleport = 'myWebhook',
+        -- job = 'myOtherWebhook',
+    },
+}
+```
+
+## Permissions
+
+|Permission value|Description|
+|---|---|
+`*`|Grants all permissions|
+
+### Admin actions
+|Permission value|Description|
+|---|---|
+`admin`|Grants all admin actions related permissions|
+`admin.invincible`|Admin can be invincible|
+`admin.invisible`|Admin can be invisible|
+`admin.noclip`|Admin can noclip|
+`admin.tomarker`|Admin can teleport to a marker|
+`admin.tocoords`|Admin can teleport to specific coordinates|
+`admin.spawncar`|Admin can spawn cars|
+`admin.repaircar`|Admin can repair cars|
+`admin.displaycoords`|Admin can display his coordinates|
+`admin.displaynames`|Admin can display players' names|
+`admin.setped`|Admin can change his own ped|
+`admin.announce`|Admin can post server announces|
+`admin.sendchatmessage`|Admin can send chat messages|
+
+### Players management
+|Permission value|Description|
+|---|---|
+`players`|Grants all players related permissions|
+`players.view`|Admin can view the whole data|
+`players.goto`|Admin can teleport to players|
+`players.bring`|Admin can bring players|
+`players.heal`|Admin can heal players|
+`players.revive`|Admin can revive players|
+`players.kill`|Admin can kill players|
+`players.freeze`|Admin can freeze players|
+`players.warn`|Admin can warn players|
+`players.message`|Admin can send a message to players|
+`players.inventory`|Admin can manage players inventory|
+`players.spectate`|Admin can spectate players|
+`players.kick`|Admin can kick players|
+`players.ban`|Admin can ban players|
+`players.job`|Admin can set players job|
+`players.money`|Admin can manage players money|
+`players.unban`|Admin can unban players he banned|
+`players.unbanall`|Admin can unban every player|
+
+### Reports management
+|Permission value|Description|
+|---|---|
+`reports`|Grants all reports related permissions|
+`reports.assign`|Admin can assign himself reports|
+`reports.close`|Admin can solve reports|
+`reports.sendmesage`|Admin can send messages in reports chats|

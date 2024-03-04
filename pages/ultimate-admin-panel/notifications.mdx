@@ -1,0 +1,32 @@
+# Notifications
+
+## Default system
+The notification system can be modified in `client/functions/notifications.lua`:
+
+```lua filename="notifications.lua" copy
+function showNotification(content, id, type)
+    -- Possible types : admin_info / info / warn / message / announce
+    defaultNotification(content) 
+    -- You can change with your own notification system
+    -- (by default for esx = ESX.ShowNotification() , qb = QBCore.Functions.Notify())
+end
+```
+
+## Using the Modern Notification System
+
+You can use the [Modern Notification System](https://redcorp.studio/modern-notification-system/usage):
+
+```lua filename="notifications.lua" copy
+function showNotification(content, id, type)
+    -- Possible types : admin_info / info / warn / message / announce
+    TriggerEvent(
+        "red_notifications:notify",
+        "Ultimate Admin Panel",
+        content,
+        "indigo",
+        "top-left",
+        "fa-solid fa-lock",
+        4000
+    )
+end
+```

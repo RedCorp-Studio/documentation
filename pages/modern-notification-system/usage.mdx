@@ -1,0 +1,81 @@
+# Usage
+
+The `red_notifications:notify` is a client-side event used to trigger a notification in FiveM using the Modern Notification System.
+
+## How to use
+
+```lua filename="Event usage" copy
+TriggerEvent(
+    "red_notifications:notify",
+    title,
+    content,
+    color,
+    position,
+    icon,
+    duration,
+    theme
+)
+```
+
+|Argument|Type|Description|
+|---|---|---|
+|title|string|The title of the notification.|
+|content|string|The main content or message of the notification.|
+|color|string|The color of the notification, see the colors preview above. (e.g., `info`, `success`, `warning`, `error`, `indigo`, `sky`, `pink`).|
+|position|string|The position of the notification on the screen (e.g., `top-left`, `top-center`, `top-right`, `middle-left`, `middle-center`, `middle-right`, `bottom-left`, `bottom-center`, `bottom-right`).|
+|icon|string|The Fontawesome 6 icon code to display with the notification.|
+|duration|number|The duration of the notification in milliseconds (e.g., 14000 for 14 seconds).|
+|theme|string|(Optional) The theme of the notification, can be `light` or `dark` to force using a specific theme for this notification.|
+
+## Find icons
+
+To search for icons, simply visit the icons page on [Fontawesome's website](https://fontawesome.com/icons). Look for the desired icon, and then copy its icon code.
+
+import { Callout } from 'nextra-theme-docs'
+
+<Callout emoji="⚠️">
+  Please note that you can only use **free** icons, not the "PRO" ones.
+</Callout>
+
+## Example
+
+Suppose you want to use the envelope icon. First, navigate to the [Fontawesome website](https://fontawesome.com/icons) and search for the icon (e.g., envelope). Once you find the icon, click on it to reveal its code, which should look like this:
+
+![Preview](/img/notifications/envelope.png)
+
+Then, extract the icon code from this HTML snippet and use it as an argument for the event.
+
+HTML code:
+
+```html filename="HTML code"
+<i class="fa-solid fa-envelope"></i>
+```
+
+Extracted code:
+
+```plain filename="Icon code"
+fa-solid fa-envelope
+```
+
+Then, use the following code to trigger a notification:
+
+```lua filename="Example snippet" copy
+TriggerEvent(
+    "red_notifications:notify",
+    "New Message",
+    "You have received a new message from a player.",
+    "info",
+    "top-right",
+    "fa-solid fa-envelope",
+    10000,
+    "light"
+)
+```
+
+This will display a notification with the title "New Message", the content "You have received a new message from a player," with an "info" color and an envelope icon, positioned at the top-right corner of the screen, and the notification will last for 10 seconds (10000 milliseconds) using the "light" theme.
+
+## Preview
+
+Here is preview for the different colors you can use and difference between light and dark theme.
+
+![Preview](/img/notifications/preview.png)

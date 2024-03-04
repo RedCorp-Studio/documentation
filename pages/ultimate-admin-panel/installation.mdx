@@ -1,0 +1,23 @@
+# Installation
+
+Before installing the script, please ensure that you have installed the following dependencies:
+- `es_extended` (version 1.4.0 or above) or `qb-core` (version 1.1.0 or above)
+- `oxmysql`
+
+## Add ACEs
+To ensure that Ultimate Admin Panel's permissions work correctly you will need to add some ACEs in your `server.cfg` file **before starting red_admin**:
+```
+add_ace resource.red_admin command allow
+```
+
+## Start the script
+Then add `ensure red_admin` in your `server.cfg` file. Please make sure you place it after the following ressources:
+- `es_extended` or `qb-core`
+- `esx_multicharacter` or `qb-multicharacter` (if you use multi character)
+- `ox_inventory` (if you are using it)
+
+Finally run the ressource by typing the following commands in your server console:
+```
+cfx> refresh
+cfx> ensure red_admin
+```

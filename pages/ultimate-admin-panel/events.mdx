@@ -1,0 +1,27 @@
+# Events
+## Client
+### Duty update
+```lua copy
+RegisterNetEvent('red_admin:updateOnDuty', function(dutyValue)
+  -- your code here
+end)
+```
+## Server
+### Duty update
+```lua
+RegisterNetEvent('red_admin:onduty', function(playerId, dutyValue)
+  -- your code here
+end)
+```
+### Kick
+```lua
+RegisterNetEvent('red_admin:onPlayerKick', function(playerIdentifier, reason, kickerIdentifier)
+  -- your code here
+end)
+```
+### Ban
+```lua
+RegisterNetEvent('red_admin:onPlayerBan', function(playerIdentifier, reason, time, bannerIdentifier)
+  -- your code here
+end)
+```

@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "modern-notification-system": "Modern Notification System",
+  "ultimate-admin-panel": "Ultimate Admin Panel",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://twitter.com/shuding_",
+    "newWindow": true
+  }
+}

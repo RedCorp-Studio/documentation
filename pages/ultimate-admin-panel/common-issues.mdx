@@ -1,0 +1,46 @@
+# Common issues
+
+## Old Permissions Syntax
+Starting from version 1.3.0, you will need to migrate your permissions to a new format. To do this, please run the following command:
+```plain copy
+uap migrate permissions
+```
+
+## Illegal mix of collations
+
+If you encounter the following error in Ultimate Admin Panel:
+
+```plain filename="SQL error"
+SCRIPT ERROR in promise (unhandled rejection): Error: red admin was unable to execute a query! 
+Illegal mix of collations (utf8mb4_unicode_ci, IMPLICIT) and (utf8mb4_general_ci, IMPLICIT) for operation '='
+```
+
+This is caused by a mismatch of collations in the database tables. Fortunately, there is a straightforward fix for this issue. Follow the steps below to resolve the problem:
+
+### Fixing the "Illegal mix of collations" error
+
+1. Before making any changes to your database, it's crucial to create a backup to prevent data loss in case anything goes wrong during the process.
+
+2. Login to your database management system with the necessary credentials. This could be through phpMyAdmin, MySQL command-line, or any other database tool you are using. Once you have access to your database, execute the following SQL queries to update the collation of the affected tables:
+
+```sql filename="SQL queries fixing collations" copy
+ALTER TABLE `red_reports`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE `red_reports_messages`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE `red_notes`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE `red_bans`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE `red_settings`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE `red_logins`
+CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+These queries will change the collation of the specified tables (`red_reports`, `red_reports_messages`, `red_notes`, `red_bans`, `red_settings`, and `red_logins`) to `utf8mb4_unicode_ci`, which is compatible with a wide range of characters and should resolve the collation mismatch error.
