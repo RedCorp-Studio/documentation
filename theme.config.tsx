@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
@@ -10,6 +11,14 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'RedCorp Studio © 2020 - 2023',
   },
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        titleTemplate: '%s – RedCorp Studio'
+      }
+    }
+  }
 }
 
 export default config
